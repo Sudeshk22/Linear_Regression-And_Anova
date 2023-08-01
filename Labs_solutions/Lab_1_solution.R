@@ -16,8 +16,6 @@ file_path <- "C:\\Users\\sudesh yadav\\OneDrive - IIT Kanpur\\Desktop\\Linear Re
 Data_exm <- read_excel(file_path, sheet = "Sheet1")
 View(Data_exm)
 
-
-
 ## printing the Data_exm columna
 Data_exm$Y1
 Data_exm$X1
@@ -57,11 +55,22 @@ write.xlsx(E_Data1, file = output_file, sheetName = "Sheet1", col.names = TRUE, 
 # Finiding the least Square estimate of the data matrix 
 library(pracma)
 
-col1<- matrix(1,nrow=5, ncol=1)
-x <- cbind(col1, Data_exm$X1,Data_exm$X2 )
+## printing the Data_exm columna
+Y <- Data_exm$Y1
+X1 <-Data_exm$X1
+X2 <- Data_exm$X2
+X <- cbind(1, X1, X2)
+#Col1s <- c(1,1,1,1,1)
+#x <- cbind(Col1s, Data_exm$X1,Data_exm$X2 )
+#y = Data_exm$Y1
 
+beta_hat <- solve(t(X)%*%X)%*%t(X)%*%Y
 
-beta_hat <- inv(t(x)%*%x)%*%t(x)%*%Data_exm$Y1
-
+beta_hat
 ##Question4
+
+y = Data_exm$Y1
+
 lm(Data_exm$Y1~Data_exm$X1+Data_exm$X2)
+
+   
