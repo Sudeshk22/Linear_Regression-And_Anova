@@ -18,7 +18,6 @@ View(Data_exm)
 
 
 
-
 ## printing the Data_exm columna
 Data_exm$Y1
 Data_exm$X1
@@ -39,6 +38,20 @@ colnames(E_Data1) <- c("Y1s","X1s","X2s")
 ## Exporting the excel file 
 ##write.xlsx(E Data 1, ”Path/Lab1 file1 export.xlsx”, sheetName = ”Sheet1”, col.names = TRUE, row.names
 # = FALSE, append = FALSE)
+
+#############
+# Install and load the openxlsx package
+install.packages("openxlsx")
+library(openxlsx)
+
+# Replace "Lab1 file1 export.xlsx" with the desired file name
+output_file <- "Lab1_file1_export.xlsx"
+E_Data1 <- data.frame(Y1s = Ys, X1s = X1s, X2s = X2s)
+
+# Write the data frame to an Excel file
+write.xlsx(E_Data1, file = output_file, sheetName = "Sheet1", col.names = TRUE, row.names = FALSE, append = FALSE)
+
+
 
 ##Question 3 
 # Finiding the least Square estimate of the data matrix 
